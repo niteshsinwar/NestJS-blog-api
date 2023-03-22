@@ -46,14 +46,14 @@ The API will be available at http://localhost:3000.
 To use the API, you will need to authenticate by sending a POST request to /auth/login with your username and password:
 
 - `POST /auth/login  - to login the account`
-+ Request body:
+###### Request body:
 ```
 {
     "username": "user",
     "password": "pass"
 }
 ```
-+ Response:
+###### Response:
 
 ```
 {
@@ -63,7 +63,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 
 - `POST /auth/signup - Create a new user account`
 
-+ Request Body:
+###### Request Body:
 
 ```
 {
@@ -71,7 +71,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
     "password": "pass"
 }
 ```
-- Response:
+###### Response:
 ```
 {
     "id": 1,
@@ -83,7 +83,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 
 - `GET /post - Get all blog posts`
 
-- Response:
+###### Response:
 
 ```
 [
@@ -102,7 +102,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 
 - `GET /post/:id - Get a single blog post by ID`
 
-- Response:
+###### Response:
 
 ```
 {
@@ -117,7 +117,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 
 - `POST /post - Create a new blog post`
 
-- Request Body:
+###### Request Body:
 ```
 {
 "title": "New Post",
@@ -126,7 +126,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 ```
 
 
-- Response:
+###### Response:
 
 ```
 {
@@ -138,7 +138,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 
 - `PUT /post/:id - Update an existing blog post by ID`
 
-- Request Body:
+###### Request Body:
 ```
 {
 "title": "Updated Post",
@@ -146,7 +146,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 }
 ```
 
-- Response:
+###### Response:
 
 ```
 {
@@ -159,7 +159,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 
 - `DELETE /posts/:id - Delete an existing blog post by ID`
 
-- Response:
+###### Response:
 ```
 HTTP/1.1 204 No Content
 ```
