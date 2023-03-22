@@ -1,4 +1,6 @@
-import { IsString, MinLength, MaxLength, IsNotEmpty } from 'class-validator';
+import { IsString, MinLength, MaxLength, IsNotEmpty, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+import { Post } from 'src/entities/post.entity';
 
 export class AuthDto {
   @IsString()
@@ -11,4 +13,8 @@ export class AuthDto {
   @MinLength(8)
   @IsNotEmpty()
   password: string;
+
+  @ValidateNested({ each: true })
+  @Type(() => Post)
+  posts: Post[];
 }

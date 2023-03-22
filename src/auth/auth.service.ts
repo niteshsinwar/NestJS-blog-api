@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { compare } from 'bcrypt';
 import { User } from '../entities/user.entity';
 import { AuthDto } from './dto/auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -27,28 +26,34 @@ export class AuthService {
     return this.userRepository.save(user);
   }
 
-  async login(loginDto: AuthDto): Promise<string> {
-    const { username, password } = loginDto;
-    const user = await this.findByUsername(username);
-    if (!user) {
-      return null;
-    }
-    const match = await compare(password, user.password);
-    if (!match) {
-      return null;
-    }
-    const payload = { username: user.username };
-    const token = this.jwtService.sign(payload);
-    return token;
-  }
-  async findByUsername(username: string): Promise<User> {
-    const options: FindOneOptions<User> = { where: { username } };
-    return await this.userRepository.findOne(options);
+  async login(user: User) {
+    const payload = { sub: user.username };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 
-  async validateUser(username): Promise<User> {
-    
-    const user = await this.findByUsername(username);
-    return user;
+  async logout(user: User) {
+    const payload = { sub: user.username };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
+  
+
+  
+  async validateUser(username: string, password: string): Promise<any> {
+    const user = await this.findOne(username);
+    if (user && (await bcrypt.compare(password, user.password))) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
+  }
+
+
+  async findOne(username: string): Promise<User> {
+    const options: FindOneOptions<User> = { where: { username } };
+    return await this.userRepository.findOne(options);
   }
 }

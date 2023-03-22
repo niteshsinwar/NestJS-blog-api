@@ -1,28 +1,23 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import dbConfiguration from "./config.service";
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { User } from './entities/user.entity';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'password',
-      database: 'blog_db',
-      entities: [User],
-      synchronize: true,
-    }),
-    JwtModule.register({
-      secret: 'my_secret_key',
-      signOptions: { expiresIn: '24h' },
-    }),
-    AuthModule,
+  ConfigModule.forRoot({
+      isGlobal: true,
+      load: [dbConfiguration],
+  }),
+  TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({...configService.get('database')})
+  }),  
+    AuthModule, PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],
