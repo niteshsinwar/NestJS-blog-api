@@ -46,113 +46,65 @@ The API will be available at http://localhost:3000.
 To use the API, you will need to authenticate by sending a POST request to /auth/login with your username and password:
 
 - `POST /auth/login  - to login the account`
+Request body:
 ```
-Content-Type: application/json
-
 {
     "username": "user",
     "password": "pass"
 }
 ```
-
 If your credentials are valid, you will receive a JWT token in the response:
 
-
 ```
-Content-Type: application/json
-
 {
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2MzE4MzQ4MzUsImV4cCI6MTYzMTg1MTIzNX0.XU1TfT_uV6nGRROoM-vi7EweB2z1YqY3I0fvxdR-rsU"
 }
 ```
 
--- `POST /auth/login  - to login the account`
-POST /auth/signup - Create a new user account
+- `POST /auth/signup - Create a new user account`
+
 Request Body:
 
-json
-Copy code
+```
 {
     "username": "user",
     "password": "pass"
 }
+```
 Response:
-
-css
-Copy code
-HTTP/1.1 201 Created
-Content-Type: application/json
-
+```
 {
     "id": 1,
     "username": "user"
 }
-POST /auth/login - Authenticate and get a JWT token
-Request Body:
+```
 
-json
-Copy code
-{
-    "username": "user",
+### CRUD operation on posts
 
-
-
-Nitesh Sinwar (adi)
-continue
-json
-Copy code
-"password": "pass"
-}
-
-makefile
-Copy code
+- `GET /post - Get all blog posts`
 
 Response:
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2MzE4MzQ4MzUsImV4cCI6MTYzMTg1MTIzNX0.XU1TfT_uV6nGRROoM-vi7EweB2z1YqY3I0fvxdR-rsU"
-}
-
-sql
-Copy code
-
-- `GET /posts` - Get all blog posts
-
-Response:
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
+```
 [
 {
 "id": 1,
 "title": "First Post",
 "content": "This is my first blog post.",
-"created_at": "2022-01-01T00:00:00.000Z",
-"updated_at": "2022-01-01T00:00:00.000Z"
 },
 {
 "id": 2,
 "title": "Second Post",
 "content": "This is my second blog post.",
-"created_at": "2022-01-02T00:00:00.000Z",
-"updated_at": "2022-01-02T00:00:00.000Z"
 }
 ]
+```
 
-vbnet
-Copy code
-
-- `GET /posts/:id` - Get a single blog post by ID
+- `GET /post/:id - Get a single blog post by ID`
 
 Response:
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
+```
 {
 "id": 1,
 "title": "First Post",
@@ -160,68 +112,54 @@ Content-Type: application/json
 "created_at": "2022-01-01T00:00:00.000Z",
 "updated_at": "2022-01-01T00:00:00.000Z"
 }
+```
 
-javascript
-Copy code
 
-- `POST /posts` - Create a new blog post
+- `POST /post - Create a new blog post`
 
 Request Body:
-
+```
 {
 "title": "New Post",
 "content": "This is a new blog post."
 }
+```
 
-makefile
-Copy code
 
 Response:
 
-HTTP/1.1 201 Created
-Content-Type: application/json
-
+```
 {
 "id": 3,
 "title": "New Post",
 "content": "This is a new blog post.",
-"created_at": "2022-01-03T00:00:00.000Z",
-"updated_at": "2022-01-03T00:00:00.000Z"
 }
+```
 
-bash
-Copy code
-
-- `PUT /posts/:id` - Update an existing blog post by ID
+- `PUT /post/:id - Update an existing blog post by ID`
 
 Request Body:
-
+```
 {
 "title": "Updated Post",
 "content": "This is an updated blog post."
 }
-
-makefile
-Copy code
+```
 
 Response:
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
+```
 {
 "id": 3,
 "title": "Updated Post",
 "content": "This is an updated blog post.",
-"created_at": "2022-01-03T00:00:00.000Z",
-"updated_at": "2022-01-04T00:00:00.000Z"
 }
+```
 
-bash
-Copy code
 
-- `DELETE /posts/:id` - Delete an existing blog post by ID
+- `DELETE /posts/:id - Delete an existing blog post by ID`
 
 Response:
-
+```
 HTTP/1.1 204 No Content
+```
