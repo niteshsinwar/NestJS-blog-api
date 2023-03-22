@@ -1,4 +1,4 @@
-Blog API
+## Blog API
 This is a RESTful API for managing blog posts, built with NestJS and MySQL.
 
 Prerequisites
