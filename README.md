@@ -80,6 +80,7 @@ To use the API, you will need to authenticate by sending a POST request to /auth
 ```
 
 ### CRUD operation on posts
+Some of the basic CRUD operation on blog posts, where some of the sensative function require authentication:
 
 - `GET /post - Get all blog posts`
 
