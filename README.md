@@ -25,40 +25,49 @@ npm install
 - Create a new file called .env
 - Edit the values in the .env file to match your MySQL database configuration
 
+```
 DB_HOST=localhost
 DB_PORT=3306
 DB_USERNAME=username
 DB_PASSWORD=password
 DB_DATABASE=blog
 JWT_SECRET=secret
+```
+
 
 ### Run the API:
--npm start
--The API will be available at http://localhost:3000.
+```
+npm start
+The API will be available at http://localhost:3000.
+```
 
-Usage
-Authentication
+## Usage
+### Authentication
 To use the API, you will need to authenticate by sending a POST request to /auth/login with your username and password:
 
-bash
-Copy code
-POST http://localhost:3000/auth/login
+`POST http://localhost:3000/auth/login`
+```
 Content-Type: application/json
 
 {
     "username": "user",
     "password": "pass"
 }
+```
+
+
 If your credentials are valid, you will receive a JWT token in the response:
 
-css
-Copy code
+
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2MzE4MzQ4MzUsImV4cCI6MTYzMTg1MTIzNX0.XU1TfT_uV6nGRROoM-vi7EweB2z1YqY3I0fvxdR-rsU"
 }
+```
+
 You will need to include this token in the Authorization header of subsequent requests, like this:
 
 makefile
