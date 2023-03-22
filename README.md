@@ -45,7 +45,7 @@ The API will be available at http://localhost:3000.
 ### Authentication
 To use the API, you will need to authenticate by sending a POST request to /auth/login with your username and password:
 
-`POST http://localhost:3000/auth/login`
+- `POST /auth/login  - to login the account`
 ```
 Content-Type: application/json
 
@@ -55,12 +55,10 @@ Content-Type: application/json
 }
 ```
 
-
 If your credentials are valid, you will receive a JWT token in the response:
 
 
 ```
-HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -68,12 +66,7 @@ Content-Type: application/json
 }
 ```
 
-You will need to include this token in the Authorization header of subsequent requests, like this:
-
-makefile
-Copy code
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2MzE4MzQ4MzUsImV4cCI6MTYzMTg1MTIzNX0.XU1TfT_uV6nGRROoM-vi7EweB2z1YqY3I0fvxdR-rsU
-Endpoints
+-- `POST /auth/login  - to login the account`
 POST /auth/signup - Create a new user account
 Request Body:
 
