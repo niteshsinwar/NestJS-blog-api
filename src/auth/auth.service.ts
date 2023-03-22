@@ -33,13 +33,6 @@ export class AuthService {
     };
   }
 
-  async logout(user: User) {
-    const payload = { sub: user.username };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
-  }
-  
 
   
   async validateUser(username: string, password: string): Promise<any> {
