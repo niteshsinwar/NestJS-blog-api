@@ -4,24 +4,24 @@ This is a RESTful API for managing blog posts, built with NestJS and MySQL.
 ## Prerequisites
 To run this API, you will need:
 
--Node.js (v14 or later)
--MySQL (v8 or later)
--Postman (or another API development tool)
+- Node.js (v14 or later)
+- MySQL (v8 or later)
+- Postman (or another API development tool)
 
 ## Installation
 ### Clone this repository:
 git clone https://github.com/niteshsinwar/blog-api.git
 
 ### Install the dependencies:
--cd blog-api
--npm install
+- cd blog-api
+- npm install
 ### Set up the MySQL database:
--Create a new database called blog_db
--Create a new user with full privileges on the blog database (make a note of the username and password)
+- Create a new database called blog_db
+- Create a new user with full privileges on the blog database (make a note of the username and password)
 
 ### Configure the API:
--Creagte a new file called .env
--Edit the values in the .env file to match your MySQL database configuration
+- Create a new file called .env
+- Edit the values in the .env file to match your MySQL database configuration
 
 DB_HOST=localhost
 DB_PORT=3306
