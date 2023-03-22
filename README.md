@@ -1,42 +1,38 @@
-## Blog API
+# Blog API
 This is a RESTful API for managing blog posts, built with NestJS and MySQL.
 
-Prerequisites
+## Prerequisites
 To run this API, you will need:
 
-Node.js (v14 or later)
-MySQL (v8 or later)
-Postman (or another API development tool)
-Installation
-Clone this repository:
-bash
-Copy code
-git clone https://github.com/your-username/blog-api.git
-Install the dependencies:
-bash
-Copy code
-cd blog-api
-npm install
-Set up the MySQL database:
-Create a new database called blog
-Create a new user with full privileges on the blog database (make a note of the username and password)
-Import the blog.sql file in the database directory to create the necessary tables
-Configure the API:
-Copy the .env.example file to a new file called .env
-Edit the values in the .env file to match your MySQL database configuration
-makefile
-Copy code
+-Node.js (v14 or later)
+-MySQL (v8 or later)
+-Postman (or another API development tool)
+
+## Installation
+### Clone this repository:
+git clone https://github.com/niteshsinwar/blog-api.git
+
+### Install the dependencies:
+-cd blog-api
+-npm install
+### Set up the MySQL database:
+-Create a new database called blog_db
+-Create a new user with full privileges on the blog database (make a note of the username and password)
+
+### Configure the API:
+-Creagte a new file called .env
+-Edit the values in the .env file to match your MySQL database configuration
+
 DB_HOST=localhost
 DB_PORT=3306
 DB_USERNAME=username
 DB_PASSWORD=password
 DB_DATABASE=blog
 JWT_SECRET=secret
-Run the API:
-sql
-Copy code
-npm start
-The API will be available at http://localhost:3000.
+
+### Run the API:
+-npm start
+-The API will be available at http://localhost:3000.
 
 Usage
 Authentication
