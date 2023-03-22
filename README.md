@@ -45,39 +45,40 @@ The API will be available at http://localhost:3000.
 ### Authentication
 To use the API, you will need to authenticate by sending a POST request to /auth/login with your username and password:
 
-- `POST /auth/login  - to login the account`
-###### Request body:
-```
-{
-    "username": "user",
-    "password": "pass"
-}
-```
-###### Response:
-
-```
-{
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2MzE4MzQ4MzUsImV4cCI6MTYzMTg1MTIzNX0.XU1TfT_uV6nGRROoM-vi7EweB2z1YqY3I0fvxdR-rsU"
-}
-```
-
 - `POST /auth/signup - Create a new user account`
 
 ###### Request Body:
 
 ```
-{
-    "username": "user",
-    "password": "pass"
-}
+ {
+      "username": "Admin",
+      "password": "12345678"
+    }
 ```
 ###### Response:
 ```
 {
-    "id": 1,
-    "username": "user"
+    "username": "Admin",
+    "password": "$2b$10$WA0EplkWDvf2Cbst7qTI/u2aw/QIQX5FOGigq0tRbaKVLvan8k4QW"
 }
 ```
+- `POST /auth/login  - to login the account`
+###### Request body:
+```
+ {
+      "username": "Admin",
+      "password": "12345678"
+    }
+```
+###### Response:
+
+```
+{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsImlhdCI6MTY3OTQ5MTA4NCwiZXhwIjoxNjc5NTc3NDg0fQ.vSqxk-5OcVkzEhTiHW7Okq3AYYjsEUTWh_boKwv91IE"
+}
+```
+
+
 
 ### CRUD operation on posts
 Some of the basic CRUD operation on blog posts, where some of the sensative function require authentication:
@@ -88,16 +89,24 @@ Some of the basic CRUD operation on blog posts, where some of the sensative func
 
 ```
 [
-{
-"id": 1,
-"title": "First Post",
-"content": "This is my first blog post.",
-},
-{
-"id": 2,
-"title": "Second Post",
-"content": "This is my second blog post.",
-}
+    {
+        "id": 1,
+        "title": "1st blog post.",
+        "content": "this is my first blog post",
+        "author": "Admin"
+    },
+    {
+        "id": 2,
+        "title": "2nd blog post.",
+        "content": "this is my second blog post",
+        "author": "Admin"
+    },
+    {
+        "id": 3,
+        "title": "3rd blog post.",
+        "content": "this is my third blog post",
+        "author": "Admin"
+    }
 ]
 ```
 
@@ -107,23 +116,23 @@ Some of the basic CRUD operation on blog posts, where some of the sensative func
 
 ```
 {
-"id": 1,
-"title": "First Post",
-"content": "This is my first blog post.",
-"created_at": "2022-01-01T00:00:00.000Z",
-"updated_at": "2022-01-01T00:00:00.000Z"
+    "id": 1,
+    "title": "1st blog post.",
+    "content": "this is my first blog post",
+    "author": "Admin"
 }
 ```
 
-
+ #### Note: For below functions you also need to pass JWT token and username in parameters as these functions required authentication and authorization.
 - `POST /post - Create a new blog post`
 
 ###### Request Body:
 ```
-{
-"title": "New Post",
-"content": "This is a new blog post."
-}
+  {
+        "id": 3,
+        "title": "3rd blog post.",
+        "content": "this is my third blog post"
+    }
 ```
 
 
@@ -131,9 +140,10 @@ Some of the basic CRUD operation on blog posts, where some of the sensative func
 
 ```
 {
-"id": 3,
-"title": "New Post",
-"content": "This is a new blog post.",
+    "id": 3,
+    "title": "3rd blog post.",
+    "content": "this is my third blog post",
+    "author": "Admin"
 }
 ```
 
@@ -141,26 +151,31 @@ Some of the basic CRUD operation on blog posts, where some of the sensative func
 
 ###### Request Body:
 ```
-{
-"title": "Updated Post",
-"content": "This is an updated blog post."
-}
+ {
+        "title": "Modified first blog post.",
+        "content": "this is my modified first blog post"
+    }
 ```
 
 ###### Response:
 
 ```
 {
-"id": 3,
-"title": "Updated Post",
-"content": "This is an updated blog post.",
+    "id": 1,
+    "title": "Modified first blog post.",
+    "content": "this is my modified first blog post",
+    "author": "Admin"
 }
 ```
 
 
-- `DELETE /posts/:id - Delete an existing blog post by ID`
+- `DELETE /post/:id - Delete an existing blog post by ID`
 
 ###### Response:
 ```
-HTTP/1.1 204 No Content
+{
+    "title": "Modified first blog post.",
+    "content": "this is my modified first blog post",
+    "author": "Admin"
+}
 ```
