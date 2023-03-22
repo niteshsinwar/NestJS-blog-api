@@ -13,10 +13,10 @@ To run this API, you will need:
 `git clone https://github.com/niteshsinwar/blog-api.git`
 
 ### Install the dependencies:
-`cd blog-api
- npm install`
-- cd blog-api
-- npm install
+```
+cd blog-api
+npm install
+```
 ### Set up the MySQL database:
 - Create a new database called blog_db
 - Create a new user with full privileges on the blog database (make a note of the username and password)
