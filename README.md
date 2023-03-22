@@ -53,7 +53,7 @@ Request body:
     "password": "pass"
 }
 ```
-If your credentials are valid, you will receive a JWT token in the response:
+Response:
 
 ```
 {
