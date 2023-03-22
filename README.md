@@ -10,7 +10,7 @@ To run this API, you will need:
 
 ## Installation
 ### Clone this repository:
-git clone https://github.com/niteshsinwar/blog-api.git
+- git clone https://github.com/niteshsinwar/blog-api.git
 
 ### Install the dependencies:
 - cd blog-api
